@@ -1,0 +1,18 @@
+The following CSS code snippet exhibits an uncommon issue where the specificity of selectors leads to unexpected behavior:
+
+```css
+.container {
+  background-color: lightblue;
+}
+
+#myElement {
+  background-color: lightcoral; /* This style should override the previous one, but it does not */
+}
+
+.container #myElement {
+  background-color: lightgreen; /* This is the style that is actually applied */
+}
+
+```
+
+The `#myElement` selector has higher specificity than `.container`, but the more specific `.container #myElement` selector overrides it. This happens because CSS calculates specificity based on the number and types of selectors used, not just the hierarchy.  The combined selector `.container #myElement` has higher specificity due to the inclusion of two selectors (class and ID).
